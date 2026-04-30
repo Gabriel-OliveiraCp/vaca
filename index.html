@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vacas — Tudo sobre bovinos</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- Header / Navegação fixa -->
+<header>
+  <nav>
+    <div class="brand">
+      <div class="dot">V</div>
+      <div>
+        Vacas<br><span class="small muted">muu &amp; ciência</span>
+      </div>
+    </div>
+
+    <div class="menu" id="menu">
+      <a href="#inicio">Início</a>
+      <a href="#biologia">Biologia</a>
+      <a href="#economia">Importância</a>
+      <a href="#curiosidades">Curiosidades</a>
+      <a href="#humor">Humor</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#interatividade">Interatividade</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+
+  <section id="inicio" class="reveal card hero" aria-label="Início">
+    <div class="hero-content">
+      <h1>Vacas: elegância ruminante</h1>
+      <p>Bem-vindo ao site mais bovino da web — um passeio divertido e informativo sobre as magníficas vacas (Bos taurus).</p>
+      <div class="cta-row">
+        <button class="btn" id="randomFactBtn">Mostrar curiosidade aleatória</button>
+      </div>
+      <p class="muted small" style="margin-top:12px">Dica: clique na imagem da vaca várias vezes para um segredo escondido 👀</p>
+    </div>
+
+    <div class="hero-figure" title="Clique para segredo (x7)">
+      <img id="heroImg" src="assets/img/vaca1.svg" alt="Vaca de destaque">
+    </div>
+  </section>
+
+  <section id="biologia" class="reveal card" aria-label="Biologia das Vacas">
+    <h2>Biologia das Vacas</h2>
+    <div class="two-col" style="margin-top:12px">
+      <div>
+        <h3>Espécie — Bos taurus</h3>
+        <p>As vacas domésticas pertencem majoritariamente à espécie <strong>Bos taurus</strong>. São mamíferos ungulados, criadas em diversos ecossistemas com adaptações fenotípicas variadas.</p>
+
+        <h3>Sistema digestivo — ruminantes</h3>
+        <p>Vacas são ruminantes: possuem um estômago em quatro compartimentos (rumem, retículo, omaso e abomaso). Isso permite fermentar celulose com microrganismos e extrair energia de material vegetal.</p>
+      </div>
+
+      <div>
+        <h3>Curiosidades biológicas</h3>
+        <ul>
+          <li>Ruminam: mastigam o alimento, regurgitam e mastigam novamente (cud-chewing).</li>
+          <li>Temperatura corporal média: ~38–39 °C.</li>
+          <li>Sentidos: excelente olfato e memória social; reconhecem humanos e outros bovinos.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="economia" class="reveal card" aria-label="Importância Econômica">
+    <h2>Importância Econômica</h2>
+    <div class="two-col" style="margin-top:12px">
+      <div>
+        <h3>Produção de leite</h3>
+        <p>Leite e derivados (queijo, iogurte, manteiga) são produtos centrais para muitas economias rurais.</p>
+      </div>
+      <div>
+        <h3>Produção de carne</h3>
+        <p>A carne bovina é fonte importante de proteínas. Sistemas produtivos variam desde pastejo extensivo até confinamento intensivo.</p>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <h3>Impacto na economia</h3>
+      <p>Vacas geram renda direta (produtos) e indireta (insumos, transporte, processamento).</p>
+    </div>
+  </section>
+
+  <section id="curiosidades" class="reveal card" aria-label="Curiosidades">
+    <h2>Curiosidades Reais</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
+      <div>
+        <h4>Fatos interessantes</h4>
+        <ul>
+          <li>Vacas têm melhores amigos e mostram sinais de estresse quando separados.</li>
+          <li>Podem percorrer longas distâncias em pastejo — e lembrar caminhos.</li>
+          <li>Produzem milhares de litros de leite ao longo da vida, variando por raça.</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Comportamento e inteligência</h4>
+        <p>Estudos indicam que vacas aprendem com experiências, resolvem problemas simples e podem ser treinadas com reforço positivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="humor" class="reveal card" aria-label="Humor sobre Vacas">
+    <h2>Seção Humor</h2>
+    <p class="muted small">Coisas nada a ver sobre vacas — inventadas para diversão.</p>
+    <div class="humor-grid" style="margin-top:12px">
+      <div class="humor-card">
+        <h4>Se vacas dominassem o mundo</h4>
+        <p class="small">Horários de pastejo obrigatórios, parques com sombra e todos os eventos terminando em "muu".</p>
+        <button class="btn alt" data-fun="mundo">Mostrar ideia</button>
+      </div>
+      <div class="humor-card">
+        <h4>Vaca gamer</h4>
+        <p class="small">Streamer vuelve: "muu_maker" jogando Farming Simulator 2080. Emote oficial: 🐄.</p>
+        <button class="btn alt" data-fun="gamer">Ver emote</button>
+      </div>
+      <div class="humor-card">
+        <h4>Conselho aleatório</h4>
+        <p class="small">Se a vaca usar óculos, provavelmente é para ler as placas "pastagem".</p>
+        <button class="btn alt" data-fun="conselho">Surpresa</button>
+      </div>
+    </div>
+    <div style="margin-top:14px" id="humorMsg" class="card small muted"></div>
+  </section>
+
+  <section id="galeria" class="reveal card" aria-label="Galeria">
+    <h2>Galeria de Vacas</h2>
+    <p class="small muted">Clique para ampliar</p>
+    <div class="gallery" style="margin-top:12px">
+      <div class="thumb"><img src="assets/img/vaca2.svg" alt="Vaca na grama"><div class="overlay">Vaca feliz</div></div>
+      <div class="thumb"><img src="assets/img/vaca3.svg" alt="Vaca close"><div class="overlay">Close bovino</div></div>
+      <div class="thumb"><img src="assets/img/vaca4.svg" alt="Vacas no campo"><div class="overlay">Multidão</div></div>
+      <div class="thumb"><img src="assets/img/vaca5.svg" alt="Vaca deitado"><div class="overlay">Soneca</div></div>
+      <div class="thumb"><img src="assets/img/vaca6.svg" alt="Vaca olhando"><div class="overlay">Olhar</div></div>
+    </div>
+  </section>
+
+  <section id="interatividade" class="reveal card" aria-label="Interatividade">
+    <h2>Interatividade</h2>
+    <p>Interaja com botões para ver mensagens aleatórias.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+      <button class="btn" id="randomBtn">Aleatória</button>
+      <button class="btn" id="showEaster">Revelar Segredo</button>
+    </div>
+    <div id="randomDisplay" class="card" style="margin-top:16px;background:linear-gradient(180deg,#fffefb,#f7fff4)"></div>
+  </section>
+
+  <footer class="card">
+    site sobre vacas 🐄
+  </footer>
+</main>
+
+<!-- Modal / Easter egg -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="confetti">🎉🐄🎉</div>
+    <h3>Parabéns — você encontrou o segredo bovino!</h3>
+    <p class="muted">As vacas agora são oficialmente as guardiãs do pasto. Muu!</p>
+    <div style="margin-top:12px">
+      <button class="btn" id="closeModal">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>

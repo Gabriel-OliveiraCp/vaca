@@ -4,7 +4,192 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Vacas — Tudo sobre bovinos</title>
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+/* Inlined from assets/css/styles.css */
+:root{
+  --bg:#f6fbf6;
+  --card:#ffffff;
+  --accent:#6b8f6b; /* verde */
+  --accent-2:#7a5b45; /* marrom suave */
+  --muted:#465546;
+  --glass: rgba(255,255,255,0.66);
+  --header-height: 72px;
+  --radius:14px;
+  --max-width:1100px;
+  --shadow: 0 10px 30px rgba(20,30,20,0.08);
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Reset e layout base */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background: linear-gradient(180deg, #f6fbf6 0%, #eef6ee 100%);
+  color:#243023;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Top navigation (fixo) */
+header{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:var(--header-height);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.7));
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(20,20,20,0.06);
+  z-index:1000;
+}
+nav{
+  width:100%;
+  max-width:var(--max-width);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 18px;
+}
+.brand{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-weight:700;
+  color:var(--accent-2);
+}
+.brand .dot{
+  width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;align-items:center;justify-content:center;color:white;font-weight:900;font-size:20px;
+  box-shadow:var(--shadow);
+}
+.menu{
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+.menu a{
+  text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:10px;font-weight:700;font-size:14px;transition:all .22s ease;
+}
+.menu a.active, .menu a:hover{
+  color:var(--accent-2);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));transform:translateY(-2px);
+}
+/* Container central */
+.container{
+  max-width:var(--max-width);
+  margin:calc(var(--header-height) + 28px) auto;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+
+/* Seções */
+section{
+  background:transparent;
+  padding:28px;
+  border-radius:var(--radius);
+}
+.card{
+  background:linear-gradient(180deg, #ffffff, #fbfff9);
+  padding:20px;border-radius:16px;box-shadow:var(--shadow);border:1px solid rgba(120,110,100,0.05);
+}
+
+/* Hero */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:24px;
+  align-items:center;
+}
+.hero-content h1{
+  margin:0 0 12px 0;
+  font-size:clamp(28px,4vw,44px);
+  color:var(--accent-2);
+}
+.hero-content p{margin:0 0 14px 0;color:#3d4b3d}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;
+  background:var(--accent);color:white;font-weight:700;box-shadow:0 6px 18px rgba(107,143,107,0.18);
+}
+.btn.alt{background:transparent;border:2px solid var(--accent-2);color:var(--accent-2);font-weight:700}
+
+/* Imagem destaque */
+.hero-figure{
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-figure img{
+  width:100%;max-width:420px;border-radius:14px;object-fit:contain;box-shadow:var(--shadow);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1), filter .35s ease, box-shadow .25s ease;
+  cursor:pointer;background:transparent;padding:18px
+}
+.hero-figure img:hover{transform:translateY(-8px) scale(1.02);filter:brightness(.98);box-shadow:0 18px 40px rgba(50,60,40,0.12)}
+
+/* Grid para biologia / economia com colunas */
+.two-col{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:18px;
+}
+
+/* Galeria */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+  gap:14px;
+}
+.thumb{
+  position:relative;overflow:hidden;border-radius:12px;cursor:pointer;border:1px solid rgba(0,0,0,0.03);
+}
+.thumb img{
+  width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s cubic-bezier(.2,.9,.3,1), filter .35s ease;
+}
+.thumb:hover img{transform:scale(1.06)}
+.thumb .overlay{
+  position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,0.34));
+  opacity:0;transition:opacity .28s ease;display:flex;align-items:flex-end;padding:12px;color:white;font-weight:800;font-size:15px;
+}
+.thumb:hover .overlay{opacity:1}
+
+/* Humor box */
+.humor-grid{display:flex;gap:12px;flex-wrap:wrap}
+.humor-card{flex:1 1 220px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fcfff8);box-shadow:var(--shadow);border:1px solid rgba(120,110,100,0.04)}
+.random-msg{font-weight:700;color:var(--accent-2)}
+
+/* Footer */
+footer{padding:24px;text-align:center;color:var(--muted);font-size:14px}
+
+/* Responsividade */
+@media (max-width:940px){
+  .hero{grid-template-columns:1fr; text-align:center}
+  .two-col{grid-template-columns:1fr}
+  nav{padding:0 12px}
+}
+
+/* Animações de revelação (fade-in) */
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .65s cubic-bezier(.2,.9,.3,1),transform .65s cubic-bezier(.2,.9,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* Smooth scroll offset for fixed header */
+section{scroll-margin-top: calc(var(--header-height) + 18px)}
+/* small helpers */
+.muted{color:var(--muted)}
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;background:var(--glass);font-weight:700}
+.small{font-size:14px}
+.center{text-align:center}
+/* Modal (easter egg) */
+.modal{
+  position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(10,10,10,0.4);
+  z-index:2000;padding:20px;
+}
+.modal.open{display:flex}
+.modal .modal-card{background:white;padding:22px;border-radius:12px;max-width:560px;text-align:center;box-shadow:0 18px 48px rgba(0,0,0,0.25)}
+.confetti{font-size:48px;margin:14px 0}
+  </style>
 </head>
 <body>
 
@@ -167,6 +352,146 @@
   </div>
 </div>
 
-<script src="assets/js/main.js" defer></script>
+<script>
+/* Inlined from assets/js/main.js */
+/* Arquivo JS principal (extraído de index.html)
+   Mantém interatividade, easter-egg e realce de menu. */
+
+/* --- Dados: fatos e frases --- */
+const facts = [
+  "Vacas têm três quartos de seus cérebros dedicados à visão periférica!",
+  "Um rúmen saudável contém trilhões de microrganismos que ajudam a digerir celulose.",
+  "Vacas podem correr a uma velocidade surpreendente quando necessário (até ~40 km/h em curtas distâncias).",
+  "Elas formam laços sociais fortes — têm 'melhores amigos'.",
+  "A produção de leite depende de genética, nutrição e manejo."
+];
+
+const humorRandom = [
+  "E se vacas dominassem o mundo? Sinais de trânsito: 'Dê passagem ao rebanho'.",
+  "Vaca gamer: Streamer pediu 1k de 'hearts' — recebeu 1k de fardos.",
+  "Vaca futurista: usando óculos VR para simular pastagens infinitas.",
+  "Vaca filósofa: 'Se eu rumino, logo existo.'"
+];
+
+/* --- Seletores importantes --- */
+const randomFactBtn = document.getElementById('randomFactBtn');
+const randomBtn = document.getElementById('randomBtn');
+const randomDisplay = document.getElementById('randomDisplay');
+const heroImg = document.getElementById('heroImg');
+const modal = document.getElementById('modal');
+const closeModal = document.getElementById('closeModal');
+const showEaster = document.getElementById('showEaster');
+const humorMsg = document.getElementById('humorMsg');
+
+// Defensive: if any expected element is missing, log and skip attaching handlers
+function safeAddEvent(el, evt, fn){ if(el) el.addEventListener(evt, fn); else console.warn('Missing element for', evt); }
+
+/* --- Função utilitária: obter item aleatório --- */
+function aleatorio(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+/* --- Exibir curiosidade aleatória (uso por botão principal) --- */
+safeAddEvent(randomFactBtn,'click', ()=>{
+  const f = aleatorio(facts);
+  alert("Curiosidade: " + f);
+});
+
+/* --- Botão 'Aleatória' (mostra dentro da seção) --- */
+safeAddEvent(randomBtn,'click', ()=>{
+  const txt = "<strong>Curiosidade:</strong> " + aleatorio(facts);
+  if(randomDisplay) randomDisplay.innerHTML = txt;
+});
+
+/* --- Humor: botões dentro da seção humor (event delegation) --- */
+document.querySelectorAll('[data-fun]').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    if(humorMsg) humorMsg.textContent = aleatorio(humorRandom);
+  });
+});
+
+/* --- Galeria: clique em miniaturas para abrir imagem em nova aba (simples) --- */
+document.querySelectorAll('.thumb img').forEach(img=>{
+  img.addEventListener('click', ()=> window.open(img.src, '_blank'));
+});
+
+/* --- Modal / Easter egg: abrir e fechar --- */
+function openModal(){ if(modal) modal.classList.add('open'); }
+function closeModalFn(){ if(modal) modal.classList.remove('open'); }
+safeAddEvent(closeModal,'click', closeModalFn);
+safeAddEvent(showEaster,'click', openModal);
+
+/* --- Easter egg oculto: clicar 7 vezes no hero ou digitar 'muu' --- */
+let clickCount = 0;
+if(heroImg){
+  heroImg.addEventListener('click', ()=>{
+    clickCount++;
+    if(clickCount >= 7){
+      openModal();
+      clickCount = 0;
+    }
+    clearTimeout(window._clickReset);
+    window._clickReset = setTimeout(()=>{ clickCount = 0 }, 1500);
+  });
+} else console.warn('heroImg not found');
+
+let keySeq = '';
+document.addEventListener('keyup', (e)=>{
+  keySeq += e.key.toLowerCase();
+  if(keySeq.endsWith('muu')){
+    openModal();
+    keySeq = '';
+  }
+  if(keySeq.length>10) keySeq = keySeq.slice(-10);
+});
+
+/* --- Menu ativo ao rolar (IntersectionObserver) --- */
+const menuLinks = document.querySelectorAll('#menu a');
+const sections = Array.from(menuLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(s=>s);
+
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    const id = entry.target.id;
+    const link = document.querySelector('#menu a[href="#' + id + '"]');
+    if(entry.isIntersecting){
+      menuLinks.forEach(l=>l.classList.remove('active'));
+      if(link) link.classList.add('active');
+    }
+  });
+},{root:null,threshold:0.45});
+
+sections.forEach(s=> io.observe(s));
+
+/* --- "Reveal" animação quando se tornam visíveis --- */
+const reveals = document.querySelectorAll('.reveal');
+const rIO = new IntersectionObserver(entries=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){ en.target.classList.add('visible'); rIO.unobserve(en.target); }
+  });
+},{threshold:0.12});
+reveals.forEach(r=> rIO.observe(r));
+
+/* --- Smooth scroll offset fix --- */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    const href = a.getAttribute('href');
+    if(!href.startsWith('#')) return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if(!target) return;
+    const y = target.getBoundingClientRect().top + window.pageYOffset - (parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) + 14);
+    window.scrollTo({top: y, behavior:'smooth'});
+  });
+});
+
+/* --- Fechar o modal com ESC --- */
+document.addEventListener('keydown', e=>{
+  if(e.key === 'Escape'){ closeModalFn(); }
+});
+
+/* --- Pequena carga inicial: mostrar um fato no carregamento --- */
+window.addEventListener('load', ()=>{
+  randomDisplay.innerHTML = "<strong>Curiosidade:</strong> " + aleatorio(facts);
+});
+  </script>
 </body>
 </html>
+
